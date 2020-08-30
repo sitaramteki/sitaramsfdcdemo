@@ -1,0 +1,20 @@
+<template>
+    <div class="slds-box slds-size_1-of-3" style="background-color:rgb(211, 247, 128);">
+        <P class="slds-p-top_medium slds-them_shade slds-box slds-text-title slds-text-align_center " style="background-color:rgb(235, 135, 104); color:black">DELL ENROLL COURSE</P>
+        <template for:each={allCouseDetails} for:item="c">
+         <div key={c.id}>
+        <lightning-card icon-name="standard:pricebook" title={c.courseName} class ="slds-p-top_medium">
+            <div class="slds-p-horizontal_small">
+            <p  class="slds-text-heading_medium slds-text-colour_sucess slds-p-around_medium">Course Duration :{c.courseDuration}</p>
+            <p  class="slds-text-heading_medium slds-text-colour_sucess slds-p-around_medium">Course Fee :{c.courseFee}</p>
+            <p  class="slds-text-heading_medium slds-text-colour_sucess slds-p-around_medium">Course Faculty :{c.mentor}</p>
+            </div>
+            <lightning-button slot ="actions" variant ="brand" label="Enroll" onclick={handleenroll}></lightning-button>
+            <p slot="footer" class="slds-text-colour_sucess slds-text-heading_large"
+             style= "color: green;">{c.courseRating}</p>
+
+        </lightning-card> 
+            </div>
+        </template>
+</div>
+</template>

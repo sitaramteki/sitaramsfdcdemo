@@ -1,0 +1,115 @@
+<template>
+    <div style="background-color: #00447C;">
+    <template if:true={propertiesFound}>
+        <lightning-layout multiple-rows>
+            <template for:each={properties} for:item="prop">
+                <lightning-layout-item key={prop.Id} size="6" padding="around-small">
+                    <lightning-layout  key={prop.Id} multiple-rows >
+                        <div key={prop.Id} class="slds-box slds-grid slds-wrap" style="background-color:#B2FFFF;width:100%">
+                            <lightning-layout-item class="slds-col slds-size_4-of-12" size="4" padding="around-small">
+                                <p style="border: 3px solid #B2FFFF;">
+                                <lightning-formatted-rich-text value={prop.Property_Main_Image__c}>
+                                </lightning-formatted-rich-text>
+                                </p>
+                            </lightning-layout-item>
+                            <lightning-layout-item  style="background-color:#B2FFFF;" class="slds-col slds-size_8-of-12" size="8" padding="around-small">
+                                <div style="border: 1px solid #00447C;">
+                                <lightning-card title={prop.Furnished_Type__c}>
+                                    <lightning-layout-item style="color: Red;" padding="around-small" size="12"
+                                        small-device-size="6" large-device-size="6" medium-device-size="6">
+                                        Rent in INR:{prop.Rent__c}
+                                    </lightning-layout-item><br>
+                                    <lightning-layout-item padding="around-small" size="12" small-device-size="6"
+                                        large-device-size="6" medium-device-size="6">
+                                        {prop.No_of_Bed_Room__c} BHK House for Rent{prop.Covered_area_Sqft__c} sqft.
+                                    </lightning-layout-item><br>
+                                    <lightning-layout-item padding="around-small" size="12" small-device-size="6"
+                                        large-device-size="6" medium-device-size="6">
+                                        Location:{prop.Area__c}
+                                    </lightning-layout-item><br>
+                                    <lightning-layout-item padding="around-small" size="12" small-device-size="6"
+                                        large-device-size="6" medium-device-size="6">
+                                        {prop.No_of_Bed_Room__c} Room {prop.No_of_Bath_Room__c} BathRoom
+                                        {prop.Furnished_Type__c}
+                                    </lightning-layout-item>
+                                </lightning-card>
+                                </div>
+                                <div class="slds-var-p-top_small slds-align_absolute-center">
+                                    <lightning-button-group>
+                                        <lightning-button variant="brand" label="Owner" class="slds-var-p-around_small"
+                                            value={prop.Property_Owner__c} onclick={ownerDetailsClick} ></lightning-button>
+                                        <lightning-button variant="brand" label="Ask" class=" slds-p-around_small"
+                                            value={prop.Id} onclick={EnquieryDetailsClick}></lightning-button>
+                                        <lightning-button variant="brand" label="Details"
+                                            class= "slds-var-p-around_small" value={prop.Id}></lightning-button>
+                                    </lightning-button-group>
+                                </div>
+                            </lightning-layout-item>
+                        </div>
+                    </lightning-layout>
+                </lightning-layout-item>
+            </template>
+        </lightning-layout>
+    </template>
+    <template if:false={propertiesFound}>
+        <div class="slds-align_absolute-center" style="color: rgb(255, 251, 0);font-weight:bold;">
+            No Properties Listed. Please Stay tune for Listing out the Properties Soon...
+        </div>
+    </template>
+</div>
+
+<!--           ****************Owner Details Section mstart***********************   -->
+<template if:true={openOwnerDetails}>
+<div class="slds-align_absolute-center">
+     <section  role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open  " aria-modal="true">
+         <div class="slds-modal__container" >
+                <header class="slds-modal__header" style="border: 1px solid #00447C; background-color: #00447C;">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeOwnerModel}>
+                        <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small">
+                        </lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                        <h2 class="slds-text-heading_medium slds-hyphenate" style="font-weight:bold;background-color: #00447C;color:white;">Dell Office Owner Details</h2>
+                </header>
+                <div class="slds-modal__content slds-var-p-around_medium" style="border: 1px solid #00447C">
+                    <c-my-property-owner property-owner-id={propOwnerId}></c-my-property-owner>
+                </div>
+         </div>
+     </section>
+     <div class="slds-backdrop slds-backdrop_open"></div>
+    </div>
+
+</template>
+<!--           ****************Owner Details Section end***********************   -->
+
+<!--           ****************Enquiery Details Section Start***********************   -->
+<template if:true={openEnquieryDetails}>
+    <div>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open" aria-modal="true">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header" style="border: 1px solid #00447C; background-color: #00447C;">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeEnquieryModel}>
+                    <lightning-icon icon-name="utility:close"
+                        alternative-text="close"
+                        variant="inverse"
+                        size="small">
+                    </lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                    <h2 class="slds-text-heading_medium slds-hyphenate" style="font-weight:bold;background-color: #00447C;color:white;">Enquiry Details</h2>
+            </header>
+            <div class="slds-modal__content slds-p-around_medium" style="border: 1px solid #00447C">
+                <c-my-property-enquiery property-id={enquierypropertyId} object-api-name="Property_Enquiry__c"></c-my-property-enquiery>
+            </div>
+     </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+    </div>
+
+</template>
+<!--           ****************Enquiery Details Section end***********************   -->
+
+</template>

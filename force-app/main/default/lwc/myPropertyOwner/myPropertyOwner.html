@@ -1,0 +1,19 @@
+<template>
+    <lightning-record-view-form record-id={propertyOwnerId} object-api-name="Property_Owner__c"> <!--   {propertyOwnerId} -->
+        <lightning-layout multiple-rows>        
+            <div class="slds-box slds-grid slds-wrap slds-var-p-around_small" style="border: 1px solid #00447C;background-color: #B2FFFF">
+               
+                <div class="slds-col slds-size_4-of-12 slds-var-p-around_small"> <!--   style="width:100%" -->
+                    <lightning-output-field variant="label-hidden" field-name="Owner_Photo__c"> </lightning-output-field>
+                </div>
+                <div class="slds-col slds-size_8-of-12 slds-var-p-around_small"> <!--   style="margin-left: 4%" -->
+                    <lightning-output-field variant="label-hidden"  field-name="Owner_Name__c"></lightning-output-field>
+                    <lightning-output-field variant="label-hidden"  field-name="Email__c"></lightning-output-field>
+                    <lightning-output-field variant="label-hidden"  field-name="Owner_Phone__c"></lightning-output-field>
+                    <lightning-output-field variant="label-hidden"  field-name="Owner_Address__c"></lightning-output-field> 
+                </div>
+ 
+            </div>  
+        </lightning-layout>
+    </lightning-record-view-form>   
+</template>

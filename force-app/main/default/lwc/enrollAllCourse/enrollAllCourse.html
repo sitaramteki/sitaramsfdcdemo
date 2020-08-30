@@ -1,0 +1,7 @@
+<template>
+    <div class="slds-box slds-grid slds-wrap slds-gutters">
+        <template for:each={allCouseDetails} for:item="c" >
+           <c-enroll-course-child key={c.id} course-details={c} class="slds-col"></c-enroll-course-child>
+        </template>
+</div>
+</template>

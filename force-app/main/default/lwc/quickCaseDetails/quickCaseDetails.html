@@ -1,0 +1,147 @@
+<template>
+    <div style="background-color: rgb(210, 244, 250);">
+        <div>
+            <h1 class="slds-var-p-top_medium slds-theme_shade slds-box slds-text-title slds-text-align_center"
+            style="background-color: white; color:Green; font-size:20px; font-weight:bold">
+            View/Edit/Create Case Record
+            </h1>
+            <p>
+                <lightning-button-group class ="slds-var-p-top_x-small  slds-align_absolute-center">
+                    <lightning-button 
+                    class ="slds-var-p-around_small" 
+                    variant ="success" 
+                    label="New Case" 
+                    name="New Case" 
+                    value="New Case" 
+                    onclick={newCase}>
+                </lightning-button>
+                    <lightning-button 
+                        class ="slds-var-p-around_small" 
+                        variant="success"
+                        label="Close"
+                        name="Close"
+                        value="Close" 
+                        onclick={newClose} 
+                    >
+                    </lightning-button>
+            </lightning-button-group>
+           </p>
+        </div>
+        <lightning-card title="">
+                    <!--<div style="background-color: rgb(165, 116, 116);">
+                            <template if:true={viewcase}>
+                                        <lightning-record-view-form
+                                                record-id={viewcurrentCaseRecordId}
+                                                object-api-name={caseObject}>
+                                            <div class="slds-grid">
+                                                <div class="slds-col slds-size_1-of-2">
+                                                    <lightning-output-field field-name="CaseNumber">
+                                                    </lightning-output-field>
+                                                    <lightning-output-field field-name="Status">
+                                                    </lightning-output-field>
+                                                    <lightning-output-field field-name="Origin">
+                                                    </lightning-output-field>
+                                                    <lightning-output-field field-name="Subject">
+                                                    </lightning-output-field>
+                                                    <lightning-output-field field-name="Description">
+                                                    </lightning-output-field>
+                                                    <lightning-output-field field-name="ContactEmail">
+                                                    </lightning-output-field>
+                                                    <lightning-output-field field-name="ContactFax">
+                                                    </lightning-output-field>
+                                                    <lightning-output-field field-name="ContactMobile">
+                                                    </lightning-output-field>
+                                                    <lightning-output-field field-name="Type">
+                                                    </lightning-output-field>
+                                                </div>
+                                                <div class="slds-col slds-size_1-of-2">
+                                                
+                                                    <lightning-output-field field-name="ContactId">
+                                                    </lightning-output-field>
+                                                    <lightning-output-field field-name="ClosedDate">
+                                                    </lightning-output-field>
+                                                    <lightning-output-field field-name="CreatedDate">
+                                                    </lightning-output-field>
+                                                    <lightning-output-field field-name="EngineeringReqNumber__c">
+                                                    </lightning-output-field>
+                                                    <lightning-output-field field-name="IsEscalated">
+                                                    </lightning-output-field>
+                                                    <lightning-output-field field-name="Comments">
+                                                    </lightning-output-field>
+                                                    <lightning-output-field field-name="SLAViolation__c">
+                                                    </lightning-output-field>
+                                                    <lightning-output-field field-name="Type">
+                                                    </lightning-output-field>
+                                                    
+                                                </div>
+                                            </div>
+                                        </lightning-record-view-form>
+                            </template> 
+                    </div>-->
+                   <!-- <div style="background-color: rgb(255, 255, 255);">
+                            <template if:true={viewcase}>
+                                <lightning-record-form object-api-name={caseObject} fields={caseFields} record-id={viewcurrentCaseRecordId}
+                                    columns="2" mode={mode}  onsuccess={handlesuccess}>
+                                </lightning-record-form>
+                            </template> 
+                    </div>
+                    <div style="background-color: rgb(196, 135, 135);">
+                        <template if:true={showcase}>
+                            <lightning-record-form object-api-name={caseObject} fields={caseFields} record-id={showcurrentCaseRecordId}
+                                columns="2" mode={mode}  onsuccess={handlesuccess}>
+                            </lightning-record-form>
+                        </template> 
+                </div>-->
+                <div style="background-color: rgb(210, 244, 250);">
+                    <template if:true={showcase}>
+                        <lightning-record-form object-api-name={caseObject} layout-type="Full" record-id={showcurrentCaseRecordId}
+                            columns="2" mode='view' onsuccess={handlesuccessshowcase}>
+                        </lightning-record-form>
+                    </template> 
+            </div>
+            <div style="background-color: rgb(210, 244, 250);">
+                <template if:true={viewcase}>
+                    <lightning-record-form object-api-name={caseObject} fields={caseFields} record-id={viewcurrentCaseRecordId}
+                        columns="2" mode='view'  onsuccess={handlesuccessviewcase}>
+                    </lightning-record-form>
+                </template> 
+            </div>
+            <div style="background-color: rgb(210, 244, 250);">
+                <template if:true={newcase}>
+                    <lightning-record-form object-api-name={caseObject} layout-type="Full" record-id={newcurrentCaseRecordId}
+                        columns="2" mode='view' onsuccess={handlesuccessnewcase}>
+                    </lightning-record-form>
+                </template> 
+            </div>
+            </lightning-card>
+    </div>
+</template>
+<!--
+    <div class="slds-var-p-around_medium">
+        <lightning-card title="View Edit Case Record">
+            <template if:true={newcase}>
+                <lightning-record-form object-api-name={caseObject} fields={caseFields} record-id={currentCaseRecordId} columns="2" mode={mode} layout-type="Full">
+                </lightning-record-form>
+            </template> -->
+<!-- <template if:true={newcase}>
+                <lightning-record-form object-api-name={caseObject} fields={caseFields}
+                    columns="2" mode="edit" layout-type="Full" onsuccess={handlesuccess}>
+                </lightning-record-form>
+            </template>-->
+           <!-- <template if:true={showcase}>
+                <lightning-record-form object-api-name={caseObject} fields={caseFields} record-id={showcurrentCaseRecordId}
+                    columns="2" mode={mode} layout-type="Full" onsuccess={handlesuccess}>
+                </lightning-record-form>
+            </template>
+            <template if:true={viewcase}>
+                <lightning-record-form object-api-name={caseObject} fields={caseFields} record-id={viewcurrentCaseRecordId}
+                    columns="2" mode={mode}  onsuccess={handlesuccess}>
+                </lightning-record-form>
+            </template> 
+
+        <lightning-record-form object-api-name={caseObject} fields={caseFields} record-id={currentCaseRecordId}
+                columns="2" mode="edit" layout-type="full" onsuccess={handlesuccess}>
+            </lightning-record-form>
+    
+</lightning-card>
+    </div> -->

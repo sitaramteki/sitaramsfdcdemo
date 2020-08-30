@@ -1,0 +1,27 @@
+<template>
+    <div style="border: 12px solid #00447C;background-color: #B2FFFF;">
+    <lightning-layout-item class="slds-grid slds-wrap slds-var-p-around_small">
+                <div class="slds-col slds-size_1-of-5 slds-var-p-around_small header-column">
+                    <lightning-combobox label="Locality" variant="label-stacked" field-level-help="Search Property based on Location" value={location} options={locationsOptions} placeholder ="Select Locality" onchange={handleLocationChange}>
+                    </lightning-combobox>
+                </div>
+                <div class="slds-col slds-size_1-of-5 slds-var-p-around_small header-column">
+                    <lightning-combobox label="No of Conference rooms" variant="label-stacked" field-level-help="Search Property based on No of Conference rooms" value={noOfBedRoom} options={noOfBedRoomOptions} placeholder ="No of Conference rooms" onchange={handleBedRoomChange}>
+                    </lightning-combobox>
+                </div>
+                <div class="slds-col slds-size_1-of-5 slds-var-p-around_small header-column">
+                    <lightning-combobox label="Floors Available" variant="label-stacked" field-level-help="Search Property on No of Floors Available" value={noOfBathRoom} options={noOfBathRoomOptions} placeholder ="No of Floors Available" onchange={handleBathRoomChange}>
+                    </lightning-combobox>
+                </div>
+                <div class="slds-col slds-size_1-of-5 slds-var-p-around_small header-column">
+                    <lightning-input type="number" value={maxBudget} label="Maximum Budget" name="maxBudget" variant="label-stacked" field-level-help="Enter Maximum Budget" placeholder ="Maximum Budget" onchange={handleBudgetChange}>
+                    </lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-5 slds-var-p-around_small slds-align_absolute-center">
+                    <lightning-button variant="brand" label="Clear" title="Primary action" onclick={handleClearClick}></lightning-button>
+                </div>
+    </lightning-layout-item>
+    
+
+    </div>
+</template>

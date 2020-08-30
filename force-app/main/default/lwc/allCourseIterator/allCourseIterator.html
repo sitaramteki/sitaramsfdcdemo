@@ -1,0 +1,14 @@
+<template>
+    <div class="slds-box slds-size_4-of-12" style="background-color:rgb(2, 72, 94);">
+        <P class="slds-var-p-top_medium slds-theme_shade slds-box slds-text-title slds-text-align_center " style="background-color:rgb(3, 160, 50); color:black">DELL COURSE DETAILS</P>
+        <ul>
+            <template iterator:c={allCouseDetails}>
+                <div if:true={c.first} key={c.value.id}>*******SITARAM***********</div>
+                <li key={c.value.id}>
+                  This Course : {c.value.courseName} will be completed in {c.value.courseDuration} and is Delivered by {c.value.mentor}
+                </li>
+                <div if:true={c.last} key={c.value.id} >*********SITARAM*********</div>
+            </template>
+</ul>
+</div>
+</template>

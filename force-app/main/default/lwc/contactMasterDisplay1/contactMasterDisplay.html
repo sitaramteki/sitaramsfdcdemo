@@ -1,0 +1,22 @@
+<template>
+    <div class="slds-box">
+    <template if:true ={contacts.data}>
+        <div class="slds-grid slds-wrap slds-gutters">
+            <template for:each={contacts.data} for:item ="c">
+                <div key={c.Id} class="slds-col slds-size_1-of-3 slds-p-around_small">
+                    <lightning-card key={c.Id} title ={c.AccountId}>
+                        <lightning-button value={c.Id} slot="actions" label ="VeiwDetails" variant ="Success" onclick={NavigateToDetails}></lightning-button>
+                        <p class="slds-p-horizontal_small">Name: {c.Name}</p>
+                        <p class="slds-p-horizontal_small">Email: {c.Email}</p>
+                        <p class="slds-p-horizontal_small">Phone: {c.Phone}</p>
+                        <p slot ="footer">{c.Email}</p>
+                    </lightning-card>
+                </div>
+            </template>
+</div>
+</template>
+<template if:true={contacts.error}>
+        {contacts.error.body.message}
+    </template>
+</div>
+</template>

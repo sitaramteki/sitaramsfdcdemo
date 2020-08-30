@@ -1,0 +1,25 @@
+<template>
+   
+    <div class="slds-box slds-size_4-of-12" style="background-color:rgb(241, 214, 143);">
+        <P class="slds-p-top_medium slds-them_shade slds-box slds-text-title slds-text-align_center " style="background-color:darksalmon; color:black">BASIC CALCULATOR</P>
+        <lightning-input type ="number" onchange={firstInputChange}
+        name ="firstnumber" label ="First Number" placeholder ="Enter First Number" value ={firstInput}></lightning-input>
+   
+    
+        <lightning-input  type ="number" onchange ={secondInputChange} name ="secondnumber" label ="Second Number" placeholder ="Enter Second Number" value ={secondInput}></lightning-input>
+   
+    
+        <lightning-button-group class ="slds-p-top_medium slds-align_absolute-center">
+            <lightning-button class ="slds-p-around_medium" variant ="brand" label="Add" onclick={handleAdd}></lightning-button>
+            <lightning-button class ="slds-p-around_medium" variant ="brand" label="Sub" onclick={handleSub}></lightning-button>
+            <lightning-button class ="slds-p-around_medium" variant ="brand" label="Mul" onclick={handleMul}></lightning-button>
+            <lightning-button class ="slds-p-around_medium" variant ="brand" label="Div" onclick={handleDiv}></lightning-button>
+            <lightning-button class ="slds-p-around_medium" variant ="brand" label="Clear" onclick={handleClear}></lightning-button>
+        </lightning-button-group>
+    <template if:true={showresult}>
+    <div class="slds-p-top_medium slds-theme_shade slds-box" style="background-color:coral">
+        <P>The Result is : {totalValue}</P>
+    </div>
+    </template>
+</div>
+</template>

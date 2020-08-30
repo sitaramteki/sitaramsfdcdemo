@@ -1,0 +1,16 @@
+<template>
+    <div>
+    <lightning-card icon-name="standard:pricebook" title={courseDetails.courseName} class ="slds-p-top_medium">
+        <div class="slds-var-p-horizontal_small">
+            <ul>
+        <li  class="slds-text-heading_medium  slds-var-p-around_medium">Course Duration :{courseDetails.courseDuration}</li>
+        <li  class="slds-text-heading_medium  slds-var-p-around_medium">Course Fee :{courseDetails.courseFee}</li>
+        <li  class="slds-text-heading_medium  slds-var-p-around_medium">Course Faculty :{courseDetails.mentor}</li>
+            </ul>
+        </div>
+        <lightning-button slot ="actions" variant ="brand" label="Enroll" onclick={handleenroll}></lightning-button>
+        <div slot="footer" class="slds-text-heading_large slds-text-color_success">{courseDetails.courseRating}</div>
+
+    </lightning-card> 
+</div>
+</template>

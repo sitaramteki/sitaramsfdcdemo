@@ -1,0 +1,20 @@
+<template>
+    <div class="slds-box slds-p-around_small" style ="background-color: aquamarine;">
+        <template if:true ={allProducts}>
+            <div class="slds-grid slds-wrap slds-gutters">
+                <template for:each ={allProducts} for:item="p">
+                    <div key={p.Id} class="slds-col slds-size_1-of-3 slds-p-around_small">
+                        <lightning-card key ={p.Id} title={p.Name} >
+                            <lightning-button variant="success" label="view details" slot="actions" ></lightning-button>
+                            <p class ="slds-p-around_small">Description :{p.Description}</p>
+                            <p class ="slds-p-around_small">ProductCode :{p.ProductCode}</p>
+                            <p class ="slds-p-around_small">Product Id  :{p.Id}</p>
+                            <p class ="slds-p-around_small" slot="footer">Product Family: {p.Family}</p>
+                        </lightning-card>
+                    </div>
+
+                </template>
+</div>
+</template>
+</div>
+</template>

@@ -1,0 +1,19 @@
+<template>
+    <div class="slds-box slds-size_4-of-12" style="background-color:cornsilk">
+        <P class="slds-p-top_medium slds-them_shade slds-box slds-text-title slds-text-align_center " style="background-color:darksalmon; color:black">COURSE FEE</P>
+        <lightning-input type ="text" value ={courseName} label="Enter Course Name" >  
+        </lightning-input>
+
+        <lightning-input type ="number" value ={courseFee} label="Enter Course Fee" onchange={handleFee}>
+        </lightning-input>
+
+        <lightning-input type ="number" value ={numberOfStudents} label="Enter No of Students" onchange={handlestdNo}> 
+         </lightning-input >
+
+        <lightning-button variant ="brand" label="Total Course Fee" title="Total Fee" onclick={handleclick} class="slds-m-left_x-small">
+        </lightning-button>
+        <div class="slds-box" style="background-color:rgb(240, 197, 183)"> Total Course Fee  :{totalAmount} </div>
+    
+
+    </div>
+</template>

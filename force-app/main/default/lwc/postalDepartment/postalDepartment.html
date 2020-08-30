@@ -1,0 +1,39 @@
+<template>
+    <div class="slds-box slds-size_12-of-12" style="background-color:#00447C;">
+        <div>
+            <h1 class="slds-p-top_medium slds-them_shade slds-box slds-text-title slds-text-align_center"
+            style="background-color: white; color:brown; font-size:50px; font-weight:bold">
+            INDIAN POSTAL INDEX NUMBER
+        </h1>
+        <div class="slds-p-top_medium slds-them_shade slds-box slds-text-title slds-text-align_center" style="background-color:white;">
+            <h2 style="font-weight:bold;font-size:20px;" class="slds-text-title slds-text-align_center">Information About Indian Postal PIN Code</h2>   
+            <div class="slds-text-title slds-text-align_left">
+                <h3 style="font-weight:bold;font-size:15px;" class="slds-p-top_medium slds-text-title slds-text-align_left">What is the PIN Code?</h3>
+               <p class="slds-p-top_medium slds-text-title slds-text-align_left" style="font-size:15px;"> Postal Index Number(PIN) or PIN Code is the numbering of the post office or post code system used by India Post. The PIN Code is 6 digits long. First two digit reflects state, next the district and last three represent the post office code. Pincode system was introduced in India on 15 August in the year 1972. India Post is one of the largest postal system owned by Government of India. It has more than 1.5lac post offices across India and reaches every nook and corner of India.
+                </p>
+            </div>
+    </div>   
+        </div>
+        <div class="slds-box slds-p-top_medium" style="background-color:#e9cccc;">
+        <lightning-input name="Pin Number" label="Pin Number" placeholder="Enter Indian Pin Number" onchange={searchPinNumberChange} value={searchPinNumber}></lightning-input>
+        <lightning-input name="Branch Name" label="Branch Name" placeholder="Enter Branch Name" onchange={searchBranchChange} value={searchBranchName}></lightning-input>
+        </div >
+        <div style="background-color:white;">
+        <lightning-button-group class ="slds-p-top_medium slds-align_absolute-center">
+    <lightning-button class="slds-p-around_medium" variant="brand" label="Search By Pin" onclick={pinNumberClick}></lightning-button>
+    <lightning-button class="slds-p-around_medium" variant="brand" label="Search By Branch" onclick={branchNameClick}></lightning-button>
+    <lightning-button class="slds-p-around_medium" variant="brand" label="Clear" onclick={handleClear}></lightning-button>
+    </lightning-button-group>
+</div>
+        <template if:true={showdatatable}>
+            <div class="slds-p-top_medium slds-them_shade slds-box" style="background-color:white;">
+                <template if:true={postalDetaillList}>
+                    <lightning-datatable column-widths-mode ="fixed" hide-checkbox-column="true" data={postalDetaillList} columns={columns} key-field="Id"></lightning-datatable>
+                </template>
+                <template if:true={error}>
+                    {error}
+                </template>
+            </div>
+        </template>
+    </div>
+</template>

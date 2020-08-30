@@ -1,0 +1,13 @@
+<template>
+    <div class="slds-box slds-size_4-of-12" style="background-color:rgb(1, 185, 241);">
+        <P class="slds-var-p-top_medium slds-theme_shade slds-box slds-text-title slds-text-align_center " style="background-color:rgb(98, 236, 139); color:black">DELL COURSE DETAILS</P>
+        <ul>
+            <template for:each={allCouseDetails} for:item="c">
+             
+                <li key={c.id}>
+                  This Course : {c.courseName} will be completed in {c.courseDuration} and is Delivered by {c.mentor}
+                </li>
+            </template>
+</ul>
+</div>
+</template>

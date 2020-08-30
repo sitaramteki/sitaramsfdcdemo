@@ -1,0 +1,180 @@
+<template>
+    <div class="slds-box slds-size_12-of-12" style="background-color: #00447C;">
+        <div>
+            <h1 class="slds-var-p-top_medium slds-theme_shade slds-box slds-text-title slds-text-align_center"
+            style="background-color: white; color:Green; font-size:50px; font-weight:bold">
+            Coronavirus (COVID-19) Global Data Tracker
+            </h1>
+            <div class="slds-var-p-top_medium slds-theme_shade slds-box slds-text-title slds-text-align_center" style="background-color:white;">
+                    <h2 style="font-weight:bold;font-size:20px;" class="slds-text-title slds-text-align_center">During the present novel coronavirus (COVID-19) pandemic, those on the front lines—including health care professionals, researchers, and government experts—need quick, easy access to real-time critical data. This type of information exchange is what APIs do best, and as an API-first company, <span style="font-weight:bold;color:Red;">DELL</span> is committed to providing whatever assistance we can in this area.</h2>   
+                    <div class="slds-text-title slds-text-align_left">
+                        <h3 style="font-weight:bold;font-size:15px;" class="slds-var-p-top_medium slds-text-title slds-text-align_left">Protect yourself and others</h3>
+                       <p class="slds-var-p-top_medium slds-text-title slds-text-align_left" style="font-size:15px;"> The best way to prevent illness is to avoid being exposed to this virus. You can take steps to slow the spread.</br>
+                        1. Maintain good social distance (about 6 feet). This is very important in preventing the spread of COVID-19.</br>
+                        2. Wash your hands often with soap and water. If soap and water are not available, use a hand sanitizer that contains at least 60% alcohol.</br>
+                        3. Routinely clean and disinfect frequently touched surfaces.</br>
+                        4. Cover your mouth and nose with a mask when around others.</br>
+                        </p>
+                    </div>
+            </div>    
+            </div>
+<div style="background-color:white;">
+    <lightning-button-group class ="slds-var-p-around_medium slds-align_absolute-center">
+        <lightning-button class="slds-var-p-around_medium" variant="brand" label="Country Summary" onclick={getCountrySummary}></lightning-button>
+        <lightning-button class="slds-var-p-around_medium" variant="brand" label="Global Summary" onclick={getGlobalSummary}></lightning-button>
+        <lightning-button class="slds-var-p-around_medium" variant="brand" label="Country Card" onclick={getCountrySummarycard}></lightning-button>
+        <lightning-button class="slds-var-p-around_medium" variant="brand" label="Clear" onclick={handleClear}></lightning-button>
+    </lightning-button-group>
+</div>
+   <template if:true={showcountrydatatable}>
+        <div class="slds-var-p-top_medium slds-theme_shade slds-box" style="background-color:white;">
+            <template if:true={countrySummary}>
+                <lightning-datatable column-widths-mode ="fixed" hide-checkbox-column="true" data={countrySummary} columns={countrycolumns} key-field="Id"></lightning-datatable>
+            </template>
+            <template if:true={error}>
+                {error}
+            </template>
+        </div>
+    </template>
+    <!--<template if:true={showglobaldatatable}>
+        <div class="slds-var-p-top_medium slds-theme_shade slds-box" style="background-color:white;">
+            <template if:true={globalSummary}>
+                <lightning-datatable column-widths-mode ="fixed" hide-checkbox-column="true" data={globalSummary} columns={globalcolumns} key-field="Id"></lightning-datatable>
+            </template>
+            <template if:true={error}>
+                {error}
+            </template>
+        </div>
+    </template>-->
+    <template if:true={showglobaldatatable}>
+        <div class="slds-grid slds-wrap slds-gutters">
+            <template for:each={globalSummary} for:item="con">
+                <div class="slds-col slds-size_12-of-12 slds-var-p-around_small" key={con.Id}>
+                    <!--<lightning-card title={con.NewConfirmed} key={con.Id}>-->
+                        <!--<lightning-button value={con.Id} name={con.Id} onclick={NavigateToDetails} variant="Success" label="View Details" slot="actions"></lightning-button>-->
+                       <!-- <p class="slds-var-p-around_small">New Confirmed Cases{con.NewConfirmed}</p>
+                        <p class="slds-var-p-around_small">{con.TotalConfirmed}</p>
+                        <p class="slds-var-p-around_small">{con.NewDeaths}</p>
+                        <p class="slds-var-p-around_small">{con.NewConfirmed}</p>
+                        <p class="slds-var-p-around_small">{con.TotalDeaths}</p>
+                        <p class="slds-var-p-around_small">{con.NewRecovered}</p>
+                        <p slot="footer" key={con.Id}>{con.TotalRecovered}</p>-->
+                         <lightning-card key={con.Id}>
+                        <div class="slds-box" style="background-color: #00447C;">
+                            <h1 class="slds-var-p-top_medium slds-theme_shade slds-box slds-text-title slds-text-align_center"
+                                   style="background-color: white; color:Red; font-size:50px; font-weight:bold">
+                                  Total Cases
+                                   </h1>
+                                   <h1 class="slds-var-p-top_medium slds-theme_shade slds-box slds-text-title slds-text-align_center"
+                                   style="background-color: white; color:#8ACA2B; font-size:50px; font-weight:bold">
+                                  {con.TotalConfirmed}
+                                   </h1>
+                           </div>
+                           <div class="slds-box" style="background-color: #00447C;">
+                            <h1 class="slds-var-p-top_medium slds-theme_shade slds-box slds-text-title slds-text-align_center"
+                                    style="background-color: white; color:red; font-size:50px; font-weight:bold">
+                                    New Confirmed
+                                    </h1>
+                                    <h1 class="slds-var-p-top_medium slds-theme_shade slds-box slds-text-title slds-text-align_center"
+                                    style="background-color: white; color:#8ACA2B; font-size:50px; font-weight:bold">
+                                  {con.NewConfirmed}
+                                    </h1>
+                        </div>
+                       <div class="slds-box" style="background-color: #00447C;">
+                           <h1 class="slds-var-p-top_medium slds-theme_shade slds-box slds-text-title slds-text-align_center"
+                                   style="background-color: white; color:Red; font-size:50px; font-weight:bold">
+                                  New Deaths
+                                   </h1>
+                                   <h1 class="slds-var-p-top_medium slds-theme_shade slds-box slds-text-title slds-text-align_center"
+                                   style="background-color: white; color:#8ACA2B; font-size:50px; font-weight:bold">
+                                 {con.NewDeaths}
+                                   </h1>
+                       </div>
+                       <div class="slds-box" style="background-color: #00447C;">
+                           <h1 class="slds-var-p-top_medium slds-theme_shade slds-box slds-text-title slds-text-align_center"
+                                   style="background-color: white; color:red; font-size:50px; font-weight:bold">
+                                  New Recovered
+                                   </h1>
+                                   <h1 class="slds-var-p-top_medium slds-theme_shade slds-box slds-text-title slds-text-align_center"
+                                   style="background-color: white; color:#8ACA2B; font-size:50px; font-weight:bold">
+                                  {con.NewRecovered}
+                                   </h1>
+                       </div>
+                       <div class="slds-box" style="background-color: #00447C;">
+                           <h1 class="slds-var-p-top_medium slds-theme_shade slds-box slds-text-title slds-text-align_center"
+                                   style="background-color: white; color:red; font-size:50px; font-weight:bold">
+                                  Total Deaths
+                           </h1>
+                           <h1 class="slds-var-p-top_medium slds-theme_shade slds-box slds-text-title slds-text-align_center"
+                                   style="background-color: white; color:#8ACA2B; font-size:50px; font-weight:bold">
+                                  {con.TotalDeaths}
+                           </h1>
+                       
+                       </div>
+                       <div class="slds-box" style="background-color: #00447C;">
+                           <h1 class="slds-var-p-top_medium slds-theme_shade slds-box slds-text-title slds-text-align_center"
+                                   style="background-color: white; color:red; font-size:50px; font-weight:bold">
+                                  Total Recovered
+                                   </h1>
+                                   <h1 class="slds-var-p-top_medium slds-theme_shade slds-box slds-text-title slds-text-align_center"
+                                   style="background-color: white; color:#8ACA2B; font-size:50px; font-weight:bold">
+                                  {con.TotalRecovered}
+                                   </h1>
+                       </div>
+                    </lightning-card>
+                </div>
+            </template>
+            <template if:true={error}>
+                {error}
+            </template>
+        </div>
+        
+    </template>
+    <template if:true={showcountrydatatablecard}>
+        <div class="slds-grid slds-wrap slds-gutters">
+            <template for:each={countrySummary} for:item="eachcountry">
+                <div class="slds-col slds-size_1-of-4 slds-var-p-around_small" key={eachcountry.CountryCode}>
+                    <lightning-card title={eachcountry.Country} key={eachcountry.CountryCode}>
+                        
+                        <p class="slds-var-p-horizontal_small">
+                            <span style="color: crimson;">CountryCode :</span><span style="color: Blue;">{eachcountry.CountryCode}</span>
+                        </p>
+                        <p class="slds-var-p-horizontal_small">
+                            <span style="color: crimson;">Slug:</span><span style="color: Blue;">{eachcountry.Slug}</span>
+                        </p>
+                        <p class="slds-var-p-horizontal_small">
+                            <span style="color: crimson;">New Confirmed:</span><span style="color: Blue;">{eachcountry.NewConfirmed}</span>
+                        </p>
+                        <p class="slds-var-p-horizontal_small">
+                            <span style="color: crimson;">Total Confirmed :</span><span style="color: Blue;">{eachcountry.TotalConfirmed}</span>
+                        </p>
+                        <p class="slds-var-p-horizontal_small">
+                            <span style="color: crimson;">New Deaths :</span><span style="color: Blue;">{eachcountry.NewDeaths}</span>
+                        </p>
+                        <p class="slds-var-p-horizontal_small">
+                            <span style="color: crimson;">Total Deaths :</span><span style="color: Blue;">{eachcountry.TotalDeaths}</span>
+                        </p>
+                        <p class="slds-var-p-horizontal_small">
+                            <span style="color: crimson;">Total Recovered :</span><span style="color: Blue;">{eachcountry.TotalRecovered}</span>
+                        </p>
+                        <p class="slds-var-p-horizontal_small">
+                            <span style="color: crimson;">New Recovered :</span><span style="color: Blue;">{eachcountry.NewRecovered}</span>
+                        </p>
+                        
+                        <p style="color: cornflowerblue;" slot="footer" key={eachcountry.CountryCode}>
+                            <span style="color: rgb(255, 94, 0);">{eachcountry.CurrentDate}</span>
+                        </p>
+                    </lightning-card>
+                </div>
+            </template>
+            <template if:true={error}>
+                {error}
+            </template>
+        </div>
+    </template>
+    
+
+    
+
+</div>
+</template>
