@@ -1,5 +1,5 @@
 <template>
-    <div class="slds-box slds-p-around_small" style="background-color: greenyellow;">
+    <div class="slds-box slds-var-p-around_small" style="background-color: greenyellow;">
         <lightning-input label="Enter Case Number-Full Refresh-Open" placeholder="Case Number" value={searchCaseNumber}
             onchange={caseNumberChange}></lightning-input>
         <template if:true={cases}>
@@ -16,16 +16,16 @@
                                         value={eachCase.Id} onclick={passCaseToClose} onsuccess={showtost}></lightning-button>
                                 </template>
                             </div>
-                            <p class="slds-p-horizontal_small">
+                            <p class="slds-var-p-horizontal_small">
                                 <span style="color: crimson;">Description :</span>{eachCase.Description}
                             </p>
-                            <p class="slds-p-horizontal_small">
+                            <p class="slds-var-p-horizontal_small">
                                 <span style="color: crimson;">Account Name:</span>{eachCase.Account.Name}
                             </p>
-                            <p class="slds-p-horizontal_small">
+                            <p class="slds-var-p-horizontal_small">
                                 <span style="color: crimson;">Status :</span>{eachCase.Status}
                             </p>
-                            <p class="slds-p-horizontal_small">
+                            <p class="slds-var-p-horizontal_small">
                                 <span style="color: crimson;">Priority :</span>{eachCase.Priority}
                             </p>
                             <p style="color: cornflowerblue;" slot="footer">
