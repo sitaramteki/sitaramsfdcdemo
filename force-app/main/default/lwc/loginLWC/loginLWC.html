@@ -1,0 +1,70 @@
+<template>
+    <template if:true={opendialog}>
+    <section role="dialog" tabindex="-1" aria-label="Meaningful description of the modal content" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_large">
+        <div class="slds-modal__container">
+          <header class="slds-modal__header slds-modal__header_empty">
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closedialog}>
+                <lightning-icon icon-name="utility:close"
+                    alternative-text="close"
+                    variant="inverse"
+                    size="small">
+                </lightning-icon>
+                <span class="slds-assistive-text">Close</span>
+            </button>
+            <!--<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">  
+              <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+              </svg>
+              <span class="slds-assistive-text">Close</span>
+            </button>-->
+          </header>
+          <div class="slds-modal__content" id="modal-content-id-1">
+            <iframe src={loginsplash} 
+            frameborder="0"
+            scrolling="false" 
+            width="100%" height="800px"></iframe>
+           </div>
+          </div>
+        </div>
+      </section>
+      <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    <!--<lightning-card>
+        <div class="slds-var-m-around_medium">
+            <iframe src={loginsplash} title="description"></iframe>
+            <iframe id='iframe2' src={loginsplash} frameborder="2" style="height: 90%;
+            width: 90%; position: absolute;"></iframe>
+           <iframe src={loginsplash} 
+        frameborder="0"
+        scrolling="false" 
+        width="100%" height="800px"></iframe>      
+        </div>
+    </lightning-card>
+
+   <div class="slds-align_absolute-center">
+        <section  role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal slds-fade-in-open slds-modal_larg" aria-modal="true">
+            <div class="slds-modal__container" >
+                   <header class="slds-modal__header" style=" background-color: white;">
+                       <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeOwnerModel}>
+                           <lightning-icon icon-name="utility:close"
+                               alternative-text="close"
+                               variant="inverse"
+                               size="small">
+                           </lightning-icon>
+                           <span class="slds-assistive-text">Close</span>
+                       </button>
+                           <h2 class="slds-text-heading_medium slds-hyphenate" style="font-weight:bold;background-color: #00447C;color:white;">Dell Office Owner Details</h2>
+                   </header>
+                   <div class="slds-modal__content" style="border: 1px solid #00447C">
+                    <iframe src={loginsplash} 
+                    frameborder="0"
+                    scrolling="false" 
+                    width="100%" height="900px"></iframe>
+                   </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+       </div> -->
+
+    
+</template>
